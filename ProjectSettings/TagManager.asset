@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Background
   - Enemy
-  - Hero
+  - EnemyWeapon
   layers:
   - Default
   - TransparentFX
@@ -14,9 +13,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Dead
   - 
   - 
   - 
@@ -41,12 +40,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3228640031
+    locked: 0
+  - name: Gameplay
+    uniqueID: 1827732009
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Background
-    uniqueID: 32237583
-    locked: 0
-  - name: Front
-    uniqueID: 3823004373
     locked: 0
