@@ -4,12 +4,13 @@ using UnityEngine;
 
 namespace QDAT.DefenseBasic
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IComponentChecking
     {
         public float atkRate;
         private Animator _anim;
         private float _curAtkRate;
         private bool _isAttacked;
+        private bool _isDead;
 
         private void Awake()
         {
@@ -22,15 +23,18 @@ namespace QDAT.DefenseBasic
 
         }
 
+        public bool IsComponentNull()
+        {
+            return _anim == null;
+        }
+
         // Update is called once per frame
         void Update()
         {
+            if (IsComponentNull()) return;
             if (Input.GetMouseButtonDown(0) && !_isAttacked)
             {
-                if (_anim != null)
-                {
-                    _anim.SetBool(Const.ATTACK_ANIM, true);
-                }
+                _anim.SetBool(Const.ATTACK_ANIM, true);
                 _isAttacked = true;
             }
 
@@ -47,10 +51,17 @@ namespace QDAT.DefenseBasic
 
         public void ResetAtkAnim()
         {
-            if (_anim)
+            if (IsComponentNull()) return;
+            _anim.SetBool(Const.ATTACK_ANIM, false);
+        }
+        private void OnTriggerEnter2D(Collider2D colTarget)
+        {
+            if(IsComponentNull()) return;
+            if (colTarget.CompareTag(Const.ENEMY_WEAPON_TAG) && !_isDead)
             {
-                _anim.SetBool(Const.ATTACK_ANIM, false);
-            }
+                _anim.SetTrigger(Const.DEAD_ANIM);
+                _isDead = true;
+            }            
         }
     }
 }
