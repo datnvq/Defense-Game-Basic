@@ -16,6 +16,7 @@ namespace QDAT.DefenseBasic
         {
             _anim = GetComponent<Animator>();
             _curAtkRate = atkRate;
+            _isDead = false;
         }
         // Start is called before the first frame update
         void Start()

@@ -33,7 +33,9 @@ namespace QDAT.DefenseBasic
         {
             if(IsComponentNull()) return;
 
-            if(Vector2.Distance(_player.transform.position, transform.position) <= atkDistance)
+            float distToPlayer = Vector2.Distance(_player.transform.position, transform.position);
+
+            if (distToPlayer <= atkDistance)
             {
                 _anim.SetBool(Const.ATTACK_ANIM, true);
                 _rb.velocity = Vector2.zero;
@@ -42,6 +44,15 @@ namespace QDAT.DefenseBasic
             {
                 _rb.velocity = new Vector2(-speed, _rb.velocity.y);
             }
+        }
+
+        public void Die()
+        {
+            if(IsComponentNull() ) return;
+
+            _anim.SetTrigger(Const.DEAD_ANIM);
+            _rb.velocity = Vector2.zero;
+            gameObject.layer = LayerMask.NameToLayer(Const.DEAD_LAYER);
         }
     }
 }
