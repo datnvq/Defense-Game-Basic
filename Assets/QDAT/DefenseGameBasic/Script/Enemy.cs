@@ -8,6 +8,9 @@ namespace QDAT.DefenseBasic
     {
         public float speed;
         public float atkDistance;
+        public int minCoinBonus;
+        public int maxCoinBonus;
+
         private Animator _anim;
         private Rigidbody2D _rb;
         private Player _player;
@@ -29,7 +32,7 @@ namespace QDAT.DefenseBasic
         }
         public bool IsComponentNull()
         {
-            return _anim == null || _rb == null || _player == null;
+            return _anim == null || _rb == null || _player == null || _gm == null;
         }
 
         // Update is called once per frame
@@ -58,10 +61,11 @@ namespace QDAT.DefenseBasic
             _anim.SetTrigger(Const.DEAD_ANIM);
             _rb.velocity = Vector2.zero;
             gameObject.layer = LayerMask.NameToLayer(Const.DEAD_ANIM);
-            if(_gm != null)
-            {
-                _gm.Score++;
-            }
+
+            _gm.Score++;
+            int coinBonus = Random.Range(minCoinBonus, maxCoinBonus+1);
+            Debug.Log(coinBonus);
+            Pref.coins += coinBonus;
 
             Destroy(gameObject, 2f);
         }
