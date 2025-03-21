@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using QDAT.DefenseBasic;
 
-public class Weapon : MonoBehaviour
+
+namespace QDAT.DefenseBasic
 {
-    // Start is called before the first frame update
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class Weapon : MonoBehaviour
     {
-        if (collision.CompareTag(Const.ENEMY_TAG)){
-            Enemy enemy = collision.GetComponent<Enemy>();
-            if (enemy)
+        // Start is called before the first frame update
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag(Const.ENEMY_TAG))
             {
-                enemy.Die();
+                Enemy enemy = collision.GetComponent<Enemy>();
+                if (enemy)
+                {
+                    enemy.Die();
+                }
             }
         }
     }
 }
+
+
