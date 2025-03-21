@@ -64,7 +64,6 @@ namespace QDAT.DefenseBasic
 
             _gm.Score++;
             int coinBonus = Random.Range(minCoinBonus, maxCoinBonus+1);
-            Debug.Log(coinBonus);
             Pref.coins += coinBonus;
 
             Destroy(gameObject, 2f);
