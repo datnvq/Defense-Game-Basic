@@ -62,6 +62,7 @@ namespace QDAT.DefenseBasic
             {
                 _anim.SetTrigger(Const.DEAD_ANIM);
                 _isDead = true;
+                gameObject.layer = LayerMask.NameToLayer(Const.DEAD_LAYER);
             }
         }
     }

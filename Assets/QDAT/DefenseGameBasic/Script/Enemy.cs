@@ -11,12 +11,16 @@ namespace QDAT.DefenseBasic
         private Animator _anim;
         private Rigidbody2D _rb;
         private Player _player;
+        private bool _isDead;
+
+        private GameManager _gm;
 
         private void Awake()
         {
             _anim = GetComponent<Animator>();
             _rb = GetComponent<Rigidbody2D>();
             _player = FindObjectOfType<Player>();
+            _gm = FindObjectOfType<GameManager>();
         }
         // Start is called before the first frame update
         void Start()
@@ -48,11 +52,18 @@ namespace QDAT.DefenseBasic
 
         public void Die()
         {
-            if (IsComponentNull()) return;
+            if (IsComponentNull() || _isDead) return;
 
+            _isDead = true;
             _anim.SetTrigger(Const.DEAD_ANIM);
             _rb.velocity = Vector2.zero;
             gameObject.layer = LayerMask.NameToLayer(Const.DEAD_ANIM);
+            if(_gm != null)
+            {
+                _gm.Score++;
+            }
+
+            Destroy(gameObject, 2f);
         }
     }
 }
