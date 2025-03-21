@@ -3,35 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Dialog : MonoBehaviour
+namespace QDAT.DefenseBasic
 {
-    public Text titleTxt;
-    public Text contentTxt;
-
-    public virtual void Show(bool isShow)
+    public class Dialog : MonoBehaviour
     {
-        gameObject.SetActive(isShow);
-    }
+        public Text titleTxt;
+        public Text contentTxt;
 
-    public virtual void UpdateDialog(string title, Text content)
-    {
-        if(titleTxt != null)
+        public virtual void Show(bool isShow)
         {
-            titleTxt.text = title;
+            gameObject.SetActive(isShow);
         }
-        if(contentTxt != null)
+
+        public virtual void UpdateDialog(string title, Text content)
         {
-            contentTxt = content;
+            if (titleTxt != null)
+            {
+                titleTxt.text = title;
+            }
+            if (contentTxt != null)
+            {
+                contentTxt = content;
+            }
         }
-    }
 
-    public virtual void UpdateDialog()
-    {
+        public virtual void UpdateDialog()
+        {
 
-    }
+        }
 
-    public virtual void Close()
-    {
-        gameObject.SetActive(false);
+        public virtual void Close()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
