@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace QDAT.DefenseBasic
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoBehaviour, IComponentChecking
     {
         public float spawnTime;
         public Enemy[] enemyPrefabs;
+        public GUIManager guiMng;
         private bool _isGameOver;
         private int _score;
 
@@ -16,10 +18,27 @@ namespace QDAT.DefenseBasic
         // Start is called before the first frame update
         void Start()
         {
-            StartCoroutine(SpawnEnemy());
+            if (IsComponentNull()) return;
+
+            guiMng.ShowGameGUI(false);
+            guiMng.UpdateMainCoins();
         }
 
-        // Update is called once per frame
+        public void PlayGame()
+        {
+            Debug.Log("PlayGame called. _isGameOver: " + _isGameOver);
+            StartCoroutine(SpawnEnemy());
+
+            guiMng.ShowGameGUI(true);
+            guiMng.UpdateGameplayCoins();
+        }
+
+        public bool IsComponentNull()
+        {
+            return guiMng == null;
+        }
+
+
         void Update()
         {
 
