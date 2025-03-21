@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5734327099241287416}
   - component: {fileID: 8584862402952214750}
   - component: {fileID: 1804490950807064738}
-  m_Layer: 0
+  - component: {fileID: 2364964043210404210}
+  m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,6 +96,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.32
+--- !u!114 &2364964043210404210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6700070251816051583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8762c45c5cdd4044d81cdde61e21ff2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7638556725917630215
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,9 +121,10 @@ GameObject:
   - component: {fileID: 1622136776838730178}
   - component: {fileID: 4077985223089759868}
   - component: {fileID: 5528283850140347135}
-  m_Layer: 0
+  - component: {fileID: 3219191907168556219}
+  m_Layer: 6
   m_Name: Hero_03
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +139,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.29, y: 1.48, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1.3, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5734327099241287416}
@@ -169,8 +183,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1827732009
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 46c393f962fd43941ab8fd5e3792300d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -276,3 +290,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.89308023, y: 2.1579487}
   m_EdgeRadius: 0
+--- !u!114 &3219191907168556219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638556725917630215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2b1917c2c466749bf2dcb09fcb8eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atkRate: 1.5

@@ -57,12 +57,12 @@ namespace QDAT.DefenseBasic
         }
         private void OnTriggerEnter2D(Collider2D colTarget)
         {
-            if(IsComponentNull()) return;
+            if (IsComponentNull()) return;
             if (colTarget.CompareTag(Const.ENEMY_WEAPON_TAG) && !_isDead)
             {
                 _anim.SetTrigger(Const.DEAD_ANIM);
                 _isDead = true;
-            }            
+            }
         }
     }
 }

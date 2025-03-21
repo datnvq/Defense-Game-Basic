@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2005374775027979266}
   - component: {fileID: 5903126483372549528}
   - component: {fileID: 1034023949645279424}
-  m_Layer: 0
+  - component: {fileID: 6491524216062603617}
+  m_Layer: 6
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: EnemyWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,6 +96,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.17
+--- !u!114 &6491524216062603617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2889994777921952469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8762c45c5cdd4044d81cdde61e21ff2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8127674383912604285
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,9 +121,10 @@ GameObject:
   - component: {fileID: 7397736452055648361}
   - component: {fileID: 5134481362343405286}
   - component: {fileID: -6975200151134733143}
-  m_Layer: 0
+  - component: {fileID: 5233309009136276998}
+  m_Layer: 6
   m_Name: Hero_02
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +139,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.44, y: -0.75, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1.4, y: 1.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2005374775027979266}
@@ -169,8 +183,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1827732009
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c67d92dd0cce17c478c500b7ca19aa0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -276,3 +290,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5716865, y: 1.3723719}
   m_EdgeRadius: 0
+--- !u!114 &5233309009136276998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8127674383912604285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2b1917c2c466749bf2dcb09fcb8eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atkRate: 1.5

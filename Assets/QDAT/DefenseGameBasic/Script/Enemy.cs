@@ -48,11 +48,11 @@ namespace QDAT.DefenseBasic
 
         public void Die()
         {
-            if(IsComponentNull() ) return;
+            if (IsComponentNull()) return;
 
             _anim.SetTrigger(Const.DEAD_ANIM);
             _rb.velocity = Vector2.zero;
-            gameObject.layer = LayerMask.NameToLayer(Const.DEAD_LAYER);
+            gameObject.layer = LayerMask.NameToLayer(Const.DEAD_ANIM);
         }
     }
 }
