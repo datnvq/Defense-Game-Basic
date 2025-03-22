@@ -13,7 +13,7 @@ namespace QDAT.DefenseBasic
 
         public void UpdateUI(ShopItem item, int itemIdx)
         {
-            if (item != null) return;
+            if (item == null) return;
 
             if(hud != null)
             {
@@ -36,7 +36,7 @@ namespace QDAT.DefenseBasic
             }
             else
             {
-                if(!priceTxt)
+                if(priceTxt)
                 {
                     priceTxt.text = item.price.ToString();
                 }
