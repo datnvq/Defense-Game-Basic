@@ -38,10 +38,14 @@ namespace QDAT.DefenseBasic
             return guiMng == null;
         }
 
-
-        void Update()
+        public void Gameover()
         {
+            if(_isGameOver) return;
+            _isGameOver = true;
+            Pref.bestScore = _score;
 
+            if(guiMng.gameoverDialog != null)
+                guiMng.gameoverDialog.Show(true);
         }
 
         IEnumerator SpawnEnemy()

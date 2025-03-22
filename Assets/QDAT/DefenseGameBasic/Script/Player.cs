@@ -11,12 +11,14 @@ namespace QDAT.DefenseBasic
         private float _curAtkRate;
         private bool _isAttacked;
         private bool _isDead;
+        private GameManager _gm;
 
         private void Awake()
         {
             _anim = GetComponent<Animator>();
             _curAtkRate = atkRate;
             _isDead = false;
+            _gm = FindObjectOfType<GameManager>();
         }
         // Start is called before the first frame update
         void Start()
@@ -26,7 +28,7 @@ namespace QDAT.DefenseBasic
 
         public bool IsComponentNull()
         {
-            return _anim == null;
+            return _anim == null || _gm == null;
         }
 
         // Update is called once per frame
@@ -63,6 +65,7 @@ namespace QDAT.DefenseBasic
                 _anim.SetTrigger(Const.DEAD_ANIM);
                 _isDead = true;
                 gameObject.layer = LayerMask.NameToLayer(Const.DEAD_LAYER);
+                _gm.Gameover();
             }
         }
     }
