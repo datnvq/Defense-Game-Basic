@@ -70,6 +70,11 @@ namespace QDAT.DefenseBasic
                 _gm.guiMng.UpdateGameplayCoins();
             }
 
+            if (_gm.AuCtr)
+            {
+                _gm.AuCtr.PlaySound(_gm.AuCtr.enemyDead);
+            }
+
             Destroy(gameObject, 2f);
         }
     }

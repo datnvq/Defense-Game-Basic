@@ -57,6 +57,14 @@ namespace QDAT.DefenseBasic
             if (IsComponentNull()) return;
             _anim.SetBool(Const.ATTACK_ANIM, false);
         }
+
+        public void PlayAtkSound()
+        {
+            if (_gm.AuCtr)
+            {
+                _gm.AuCtr.PlaySound(_gm.AuCtr.playerAtk);
+            }
+        }
         private void OnTriggerEnter2D(Collider2D colTarget)
         {
             if (IsComponentNull()) return;

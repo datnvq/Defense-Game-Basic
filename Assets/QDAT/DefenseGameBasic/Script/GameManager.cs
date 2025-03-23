@@ -11,6 +11,7 @@ namespace QDAT.DefenseBasic
         public Enemy[] enemyPrefabs;
         public GUIManager guiMng;
         public ShopManger shopMng;
+        public AudioController AuCtr;
         private Player _curPlayer;
         private bool _isGameOver;
         private int _score;
@@ -28,16 +29,18 @@ namespace QDAT.DefenseBasic
 
         public bool IsComponentNull()
         {
-            return guiMng == null || shopMng == null;
+            return guiMng == null || shopMng == null || AuCtr == null; 
         }
 
         public void PlayGame()
         {
+            if(IsComponentNull()) return;
             ActivePlayer();
             StartCoroutine(SpawnEnemy());
 
             guiMng.ShowGameGUI(true);
             guiMng.UpdateGameplayCoins();
+            AuCtr.Playbgms();
         }
 
         public void ActivePlayer()
@@ -69,6 +72,7 @@ namespace QDAT.DefenseBasic
 
             if(guiMng.gameoverDialog != null)
                 guiMng.gameoverDialog.Show(true);
+            AuCtr.PlaySound(AuCtr.gameover);
         }
 
         IEnumerator SpawnEnemy()
