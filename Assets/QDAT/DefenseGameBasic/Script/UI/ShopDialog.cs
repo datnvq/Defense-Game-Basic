@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -52,6 +53,46 @@ namespace QDAT.DefenseBasic
 
                 itemUIClone.UpdateUI(item, idx);
 
+                if(itemUIClone.btn != null)
+                {
+                    itemUIClone.btn.onClick.RemoveAllListeners();
+                    itemUIClone.btn.onClick.AddListener(() => ItemEvent(item, idx));
+                }
+            }
+        }
+
+        private void ItemEvent(ShopItem item, int itemIdx)
+        {
+            if(item == null) return;
+
+            bool isUnlocked = Pref.GetBool(Const.PLAYER_PREFIX_PREF + itemIdx);
+
+            if(isUnlocked)
+            {
+                if (itemIdx != Pref.curPlayerId)
+                {
+                    Pref.curPlayerId = itemIdx;
+
+                    _gm.ActivePlayer();
+                    UpdateUI();
+                }
+
+            }
+            else if(Pref.coins >= item.price)
+            {
+                Pref.coins -= item.price;
+                Pref.SetBool(Const.PLAYER_PREFIX_PREF + itemIdx, true);
+                Pref.curPlayerId = itemIdx;
+                _gm.ActivePlayer();
+                UpdateUI();
+                if (_gm.guiMng)
+                {
+                    _gm.guiMng.UpdateMainCoins();
+                }
+            }
+            else
+            {
+                Debug.Log("Ban khong du tien!");
             }
         }
 

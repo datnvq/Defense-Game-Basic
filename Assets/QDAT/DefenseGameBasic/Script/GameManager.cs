@@ -10,6 +10,8 @@ namespace QDAT.DefenseBasic
         public float spawnTime;
         public Enemy[] enemyPrefabs;
         public GUIManager guiMng;
+        public ShopManger shopMng;
+        private Player _curPlayer;
         private bool _isGameOver;
         private int _score;
 
@@ -24,18 +26,39 @@ namespace QDAT.DefenseBasic
             guiMng.UpdateMainCoins();
         }
 
+        public bool IsComponentNull()
+        {
+            return guiMng == null || shopMng == null;
+        }
+
         public void PlayGame()
         {
-            Debug.Log("PlayGame called. _isGameOver: " + _isGameOver);
+            ActivePlayer();
             StartCoroutine(SpawnEnemy());
 
             guiMng.ShowGameGUI(true);
             guiMng.UpdateGameplayCoins();
         }
 
-        public bool IsComponentNull()
+        public void ActivePlayer()
         {
-            return guiMng == null;
+            if(IsComponentNull()) return;
+
+            if(_curPlayer != null)
+            {
+                Destroy(_curPlayer.gameObject);
+            }
+
+            var shopItems = shopMng.items;
+
+            if (shopItems == null || shopItems.Length <= 0) return;
+
+            var newPlayerPb = shopItems[Pref.curPlayerId].playerPrefab;
+
+            if(newPlayerPb != null)
+            {
+                _curPlayer = Instantiate(newPlayerPb, new Vector3(-7f, -1f, 0f), Quaternion.identity);
+            }
         }
 
         public void Gameover()
